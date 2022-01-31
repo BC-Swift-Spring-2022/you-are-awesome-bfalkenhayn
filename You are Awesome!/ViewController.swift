@@ -27,22 +27,23 @@ class ViewController: UIViewController {
       
              print(imageNumber)
       
-        var messages = ["You are awesome", "You are Great", "You are fantastic", "Fabulous? That's you"]
+        var messages = ["You are awesome", "You are Great", "You are fantastic", "Fabulous? That's you", "You're just dandy", "Absolutely, without a doubt so super cool"]
        
-        print(messageNumber)
-        messageNumber += 1
-        if messageNumber == messages.count {
-            messageNumber = 0
-        }
-        awesomeLabel.text = messages[messageNumber]
+//        print(messageNumber)
+//        messageNumber += 1
+//        if messageNumber == messages.count {
+//            messageNumber = 0
+//        }
+        awesomeLabel.text = messages[Int.random(in: 0...messages.count-1)]
         
 //
 
-        imageNumber = imageNumber + 1
+        imageNumber = Int.random(in: 0...9)
           var imageName = "image" + String(imageNumber)
-         if imageNumber == 9 {
-             imageNumber = 0}
-                imageView.image = UIImage(named: imageName)}
+//         if imageNumber == 9 {
+//             imageNumber = 0}
+              //  imageView.image = UIImage(named: imageName)}
+        imageView.image = UIImage(named: imageName)}
         
             
 
