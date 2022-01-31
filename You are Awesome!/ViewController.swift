@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBAction func messageButtonPressed(_ sender: Any) {
        let awesome = "You are awesome"
+        let great = "You are Great"
         if awesomeLabel.text == awesome {
             awesomeLabel.text = "You are Great"
             imageView.image = UIImage(named: "image1")}
@@ -30,6 +31,7 @@ class ViewController: UIViewController {
         }
         
     }
+    
      
 
 }
