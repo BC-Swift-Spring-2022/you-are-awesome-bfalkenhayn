@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
  
@@ -14,7 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     var imageNumber = -1
     var messageNumber = -1
-
+    var audioPlay: AVAudioPlayer!
     
     
     override func viewDidLoad() {
@@ -56,6 +57,8 @@ class ViewController: UIViewController {
         
         imageNumber = newImageNumber
         imageView.image = UIImage(named: "image\(imageNumber)")
+                    
+                    if let sound = NSDataAsset (name: sound0)
 
         
         
