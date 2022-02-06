@@ -15,16 +15,38 @@ class ViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     var imageNumber = -1
     var messageNumber = -1
+    var soundNumber = -1
+    var imageCount = 10
+    var soundCount = 5
+    var messageCount = 6
     var audioPlayer: AVAudioPlayer!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
        }
-
-
-
     
+ 
+
+    func playSound() { soundNumber = nonRepeatingRandom(originalNumber: soundNumber, upperBounds: soundCount)
+        
+      if let sound = NSDataAsset (name: "sound\(soundNumber)") {
+        do {
+            try audioPlayer = AVAudioPlayer(data: sound.data)
+            audioPlayer.play()
+        } catch {
+             print("\(error.localizedDescription) could not initializee avdaudioplayer object")
+        }
+        
+    }
+else {print(soundNumber)}}
+
+    func nonRepeatingRandom (originalNumber:Int , upperBounds: Int) -> Int {
+        var newNumber: Int
+            repeat { newNumber = Int.random(in: 0..<upperBounds) }
+            while  originalNumber == newNumber
+                    return newNumber
+    }
    
     
     @IBAction func messageButtonPressed(_ sender: Any) {
@@ -33,43 +55,17 @@ class ViewController: UIViewController {
       
         var messages = ["You are awesome", "You are Great", "You are fantastic", "Fabulous? That's you", "You're just dandy", "Absolutely, without a doubt so super cool"]
        
-
-       // awesomeLabel.text = messages[Int.random(in: 0...messages.count-1)]
-//        var newMessage = messages[Int.random(in: 0...messages.count-1)]
-        var newMessageNumber = Int.random(in: 0...messages.count-1)
+           messageNumber =  nonRepeatingRandom(originalNumber: messageNumber, upperBounds: messageCount)
+       awesomeLabel.text = messages[messageNumber]
         
-        repeat { newMessageNumber = Int.random(in: 0...messages.count-1) }
-        while  messageNumber == newMessageNumber
-           
-       messageNumber = newMessageNumber
-        awesomeLabel.text = messages[messageNumber]
-        
-        
-  
-          var imageName = "image" + String(Int.random(in: 0...9))
-       var  newImageNumber = Int.random(in: 0...9)
-        
-        
-        imageView.image = UIImage(named: "image\(Int.random(in: 0...9))")
-                var newImage = UIImage(named: "image\(Int.random(in: 0...9))")
-                repeat {newImageNumber =  Int.random(in: 0...9)}
-            while imageNumber == newImageNumber
-        
-        imageNumber = newImageNumber
+        imageNumber =  nonRepeatingRandom(originalNumber: imageNumber, upperBounds: imageCount)
         imageView.image = UIImage(named: "image\(imageNumber)")
+   
+        
                     
-                    if let sound = NSDataAsset (name: "sound0") {
-                do {
-                    try audioPlayer = AVAudioPlayer(data: sound.data)
-                    audioPlayer.play()
-                } catch {
-                     print("\(error.localizedDescription) could not initializee avdaudioplayer object")
-                }
-                
-            }
-        else {print("error")}
+              playSound()
                     
-
+ print(soundNumber)
         
         
     }
