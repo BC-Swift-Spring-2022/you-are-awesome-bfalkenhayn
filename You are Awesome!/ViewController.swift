@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var awesomeLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var playSoundSwitch: UISwitch!
     var imageNumber = -1
     var messageNumber = -1
     var soundNumber = -1
@@ -62,8 +63,8 @@ else {print(soundNumber)}}
         imageView.image = UIImage(named: "image\(imageNumber)")
    
         
-                    
-              playSound()
+        if playSoundSwitch.isOn {
+            playSound()}
                     
  print(soundNumber)
         
@@ -71,7 +72,11 @@ else {print(soundNumber)}}
     }
    
    
-        
+    @IBAction func playSoundToggled(_ sender: UISwitch) {
+        if !sender.isOn && audioPlayer != nil {
+                audioPlayer.stop()}
+    }
+    
     
     
     
